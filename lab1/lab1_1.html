@@ -51,7 +51,7 @@
     <script>
         'use strict';
         document.getElementById('pensionnayaForma').addEventListener('submit', function(event) {
-            event.preventDefault(); // Предотвращаем отправку формы
+            event.preventDefault(); 
             
             const age = parseInt(document.getElementById("age").value);
             const gender = document.querySelector('input[name="gender"]:checked')?.value;

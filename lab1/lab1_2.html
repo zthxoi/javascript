@@ -6,6 +6,19 @@
     body {
       font-family: sans-serif;
     }
+    form {
+      margin: 20px 0;
+    }
+    label, input, button {
+      font-size: 16px;
+    }
+    input {
+      margin: 0 10px;
+      padding: 5px;
+    }
+    button {
+      padding: 5px 15px;
+    }
   </style>
 </head>
 <body>
@@ -15,12 +28,14 @@
   <form id="crowForm">
     <label for="num">Введите количество ворон:</label>
     <input type="number" id="num" name="num" min="0" required>
-    <button type="button" onclick="counter()">Считать</button>
+    <button type="submit">Считать</button>
   </form>
 
   <script>
-     'use strict';
-    function counter() {
+    'use strict';
+    document.getElementById('crowForm').addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      
       const num = parseInt(document.getElementById("num").value);
 
       if (isNaN(num)) {
@@ -39,7 +54,7 @@
       }
 
       alert(`На ветке сидит ${num} ${ending}`);
-    }
+    });
   </script>
 
 </body>
