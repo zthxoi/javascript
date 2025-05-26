@@ -3,20 +3,20 @@
 <head>
     <title>Пенсионный калькулятор</title>
     <style>
-        body{
+        body {
             font-family: sans-serif;
         }
 
-        .form-group{
+        .form-group {
             margin-bottom: 10px;
         }
 
-        label{
+        label {
             display: block;
             margin-bottom: 5px;
         }
 
-        textarea{
+        textarea {
             width: 300px;
             height: 100px;
         }
@@ -34,14 +34,13 @@
         <div class="form-group">
             <label>Выберите пол:</label>
             <label for="male">
-                <input type="radio" id="male" name="gender" value="male"    required> Мужской</label>
+                <input type="radio" id="male" name="gender" value="male" required> Мужской</label>
             <label for="female">
-                <input type="radio" id="female" name="gender" valut="female" required> Женский
+                <input type="radio" id="female" name="gender" value="female" required> Женский
             </label>
-
         </div>
 
-        <button type="button" onclick="calcPensia()">Рассчитать пенсию</button>
+        <button type="submit">Рассчитать пенсию</button>
 
         <div class="form-group">
             <label for="result">Результат:</label>
@@ -51,50 +50,34 @@
 
     <script>
         'use strict';
-        function calcPensia(){
+        document.getElementById('pensionnayaForma').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+            
             const age = parseInt(document.getElementById("age").value);
             const gender = document.querySelector('input[name="gender"]:checked')?.value;
             const resultTextarea = document.getElementById("result");
-            let message="";
+            let message = "";
 
-            if (age >= 0 && age <= 17){
-                message = "Вам работать еще рано - учитесь";
-            }
-            else if (gender === "male" && age>=18 && age<=59){
-                message = "Вам еще работать и работать";
-            }
-            else if (gender === "female" && age >= 18 && age <= 54){
-                message = "Вам еще работать и работать";
-            }
-            else if (gender === "male" && age>=60 && age<=64){
+            if (age >= 0 && age <= 17) {
+                message = "Вам работать ещё рано — учитесь";
+            } else if (gender === "male" && age >= 18 && age <= 59) {
+                message = "Вам ещё работать и работать";
+            } else if (gender === "female" && age >= 18 && age <= 54) {
+                message = "Вам ещё работать и работать";
+            } else if (gender === "male" && age >= 60 && age <= 64) {
                 message = "Скоро пенсия!";
-            }
-            else if (gender === "female" && age >= 55 && age <= 59){
+            } else if (gender === "female" && age >= 55 && age <= 59) {
                 message = "Скоро пенсия!";
-            }
-            else if (gender === "male" && age >= 65){
+            } else if (gender === "male" && age >= 65) {
                 message = "Вам пора на пенсию";
-            }
-            else if (gender === "female" && age >= 60){
+            } else if (gender === "female" && age >= 60) {
                 message = "Вам пора на пенсию";
-            }
-            else {
-                message="да кто ты такой?"
+            } else {
+                message = "Да кто ты такой?";
             }
 
             resultTextarea.value = message;
-        }
+        });
     </script>
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
