@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Таблица</title>
+  <title>Таблица в консоль</title>
   <style>
     body {
       font-family: sans-serif;
@@ -17,26 +17,17 @@
     button {
       padding: 5px 15px;
     }
-    pre {
-      font-family: monospace;
-      background-color: #f5f5f5;
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
 
-  <h1>Таблица</h1>
+  <h1>Таблица (результат в консоли)</h1>
 
   <form id="tableForm">
     <label for="rows">Введите количество строк:</label>
     <input type="number" id="rows" name="rows" min="1" required>
-    <button type="submit">Рисовать</button>
+    <button type="submit">Вывести в консоль</button>
   </form>
-
-  <div id="tableContainer"></div>
 
   <script>
     'use strict';
@@ -44,46 +35,25 @@
       event.preventDefault();
       
       const rows = parseInt(document.getElementById("rows").value);
-      const tableContainer = document.getElementById("tableContainer"); 
-
-      console.log("Форма отправлена, начинаем построение таблицы...");
-
-      if (isNaN(rows) {
-        console.error("Ошибка: Введено не число");
-        alert("Пожалуйста, введите число");
+      
+      if (isNaN(rows) || rows < 1) {
+        console.error("Ошибка: введите целое число ≥ 1");
         return;
       }
-
-      if (rows < 1) {
-        console.error("Ошибка: Введено число меньше 1");
-        alert("Введите число большее или равное 1");
-        return;
-      }
-
-      console.log(`Строим таблицу с ${rows} строками`);
 
       const sequence = ["dog", "dog", "dog", "cat", "cat"];
-      let output = "";
+      let output = "Результат:\n";
 
       for (let i = 0; i < rows; i++) {
         let row = "";
         for (let j = 0; j < 6; j++) {
-          const value = sequence[(i * 6 + j) % sequence.length];
-          row += value + "\t";
+          row += sequence[(i * 6 + j) % sequence.length] + "\t";
         }
         output += row + "\n";
-        console.log(`Строка ${i+1}: ${row.trim()}`);
       }
 
-      console.log("Таблица успешно построена:");
       console.log(output);
-
-      const preElement = document.createElement("pre");  
-      preElement.textContent = output; 
-      tableContainer.innerHTML = ""; 
-      tableContainer.appendChild(preElement);
-
-      console.log("Результат выведен на страницу");
+      console.log("Готово! Проверьте консоль (F12)");
     });
   </script>
 
