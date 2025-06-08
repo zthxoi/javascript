@@ -58,7 +58,7 @@ book1.show();
 
 console.log(book1._price);
 
-let book2 = new Book('To Kill a Mockingbird', 1960, 890);
+let book2 = new Book('Kavedra', 1960, 890);
 book2.show()
 let book3 = new Book('1984', 1949, 250);
 book3.show()
